@@ -76,8 +76,6 @@ class Perceptron(object):
         
         
 
-ppn = Perceptron(eta=0.1, n_iter=10)      
-        
         
         
         
