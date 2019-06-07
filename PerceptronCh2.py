@@ -29,7 +29,7 @@ class Perceptron(object):
     
     """
     
-    def _init_(self, eta = 0.01,n_iter = 50, random_state = 1):
+    def __init__(self, eta = 0.01,n_iter = 50, random_state = 1):
         self.eta = eta
         self.n_iter = n_iter
         self.random_state = random_state
@@ -75,10 +75,8 @@ class Perceptron(object):
         return np.where(self.net_input(X) >= 0.0, 1, -1)
         
         
-        
-        
-        
-        
+
+ppn = Perceptron(eta=0.1, n_iter=10)      
         
         
         
