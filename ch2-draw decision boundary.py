@@ -17,8 +17,8 @@ def plot_decision_regions(X, y, classifier, resolution = 0.02):
     # plot the decision surface
     x1_min, x1_max = X[:, 0].min() - 1, X[:, 0].max() + 1
     x2_min, x2_max = X[:, 1].min() - 1, X[:, 1].max() + 1
-    xx1, xx2 = np.meshgrid(np.arrange(x1_min, x1_max, resolution),
-                           np.arrange(x2_min, x2_max, resolution))
+    xx1, xx2 = np.meshgrid(np.arange(x1_min, x1_max, resolution),
+                           np.arange(x2_min, x2_max, resolution))
     Z = classifier.predict(np.array([xx1.ravel(), xx2.ravel()]).T)
     Z = Z.reshape(xx1.shape)
     plt.contourf(xx1, xx2, Z, alpha = 0.3, cmap = cmap)
@@ -34,4 +34,11 @@ def plot_decision_regions(X, y, classifier, resolution = 0.02):
                     marker = markers[idx],
                     label = cl,
                     edgecolor = 'black')
+        
+        
+plot_decision_regions(X, y, classifier = ppn)
+plt.xlabel('sepal length[cm]')
+plt.ylabel('petal length[cm]')
+plot.legend(loc = 'upper left')
+plot.show()
     
