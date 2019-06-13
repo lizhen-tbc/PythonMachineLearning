@@ -56,5 +56,38 @@ plt.plot(range(1, len(ada.cost_) + 1), ada.cost_, marker = 'o')
 plt.xlabel('Epochs')
 plt.ylabel('Sum-squared-error')
 plt.show()
+#%%
+# use Adaline SGD
+ada = AdalineSGD(n_iter = 15, eta = 0.01, random_state = 1)
+ada.fit(X_std, y)
+
+plot_decision_regions(X_std, y, classifier = ada)
+plt.title('Adaline - stochastic gradient descent')
+plt.xlabel('sepal length')
+plt.ylabel('petal length')
+plt.legend(loc = 'upper left')
+plt.show()
+
+plt.plot(range(1, len(ada.cost_) + 1), ada.cost_, marker = 'o')
+plt.xlabel('Epochs')
+plt.ylabel('average cost')
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  
