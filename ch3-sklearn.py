@@ -36,3 +36,46 @@ ppn.fit(X_train_std, y_train)
 
 y_pred = ppn.predict(X_test_std)
 print('Misclassification samples: %d' % (y_test != y_pred).sum())
+
+#%%
+from sklearn.metrics import accuracy_score
+print('Accuracy: %.2f' % accuracy_score(y_test, y_pred))
+print('Accuracy: %.2f' % ppn.score(X_test_std, y_test))
+
+#%%
+y_pred1 = np.copy(y_pred)
+y_pred1 = ["%.2f" % i for i in y_pred]
+y_pred1 = np.array(y_pred1, dtype = '<U6')
+y_pred1[y_pred1 == "0.00"] = "red"
+y_pred1[y_pred1 == "1.00"] = "blue"
+y_pred1[y_pred1 == "2.00"] = "yellow"
+
+plt.scatter(X_test[:, 0], X_test[:, 1],
+            color = y_pred1, marker = 'o')
+plt.xlabel('sepal length [cm]')
+plt.ylabel('petal length [cm]')
+plt.legend(loc = 'upper left')
+plt.show()
+
+#%%
+y_test1 = np.copy(y_test)
+y_test1 = ["%.2f" % i for i in y_test]
+y_test1 = np.array(y_test1, dtype = '<U6')
+y_test1[y_test1 == "0.00"] = "red"
+y_test1[y_test1 == "1.00"] = "blue"
+y_test1[y_test1 == "2.00"] = "yellow"
+
+plt.scatter(X_test[:, 0], X_test[:, 1],
+            color = y_test1, marker = 'o')
+plt.xlabel('sepal length [cm]')
+plt.ylabel('petal length [cm]')
+plt.legend(loc = 'upper left')
+plt.show()
+#%% p56
+ 
+
+
+
+
+
+
