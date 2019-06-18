@@ -118,8 +118,19 @@ plt.ylim(0.0, 5.1)
 plt.xlim([0,1])
 plt.show()
 
+#%% p68
+X_train_01_subset = X_train[(y_train == 0) | (y_train == 1)]
+y_train_01_subset = y_train[(y_train == 0) | (y_train == 1)]
+lrgd = LogisticRegressionGD(eta = 0.05, n_iter = 1000, random_state = 1)
+lrgd.fit(X_train_01_subset, y_train_01_subset)
 
+plot_decision_regions(X = X_train_01_subset, y = y_train_01_subset,
+                      classifier = lrgd)
 
+plt.xlabel('petal length')
+plt.ylabel('petal width')
+plt.legend(loc = 'upper left')
+plt.show()
 
 
 
