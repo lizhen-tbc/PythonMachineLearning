@@ -132,12 +132,24 @@ plt.ylabel('petal width')
 plt.legend(loc = 'upper left')
 plt.show()
 
+#%% p71
+from sklearn.linear_model import LogisticRegression
+lr = LogisticRegression(C = 100.0, random_state = 1)
+lr.fit(X_train_std, y_train)
+plot_decision_regions(X_combined_std, y_combined, 
+                      classifier = lr, test_idx = range(105, 150))
 
+plt.xlabel('petal length')
+plt.ylabel('petal width')
+plt.legend(loc = 'upper left')
+plt.show()
 
+lr.predict_proba(X_test_std[:3, :])
 
-
-
-
+lr.predict_proba(X_test_std[:3, :]).sum(axis = 1)
+lr.predict_proba(X_test_std[:3, :]).argmax(axis = 1)
+lr.predict(X_test_std[:3, :])
+lr.predict(X_test_std[0, :].reshape(1,-1))
 
 
 
