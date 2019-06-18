@@ -67,28 +67,19 @@ class LogisticRegressionGD(object):
             
         return self
     
-    def partial_fit(self, X, y):
-        """Fit training data without reinitializing the weights"""
-        if not self.w_initialized:
-            self._initialize_weights(X.shape[1])
-        if y.ravel().shape[0] > 1:
-            for xi, target in zip(X, y):
-                self._update_weights(xi, target)
-        else:
-            self._update_weights(X, y)
             
     def net_input(self, X):
         """Calculate net input"""
         return np.dot(X, self.w_[1:]) + self.w_[0]
     
-    def activation(self, X):
-        """compute linear activation"""
-        return X
+    def activation(self, z):
+        """compute logistic sigmoid activation"""
+        return 1/(1 + np.exp(-np.clip(z, -250, 250)))
     
     def predict(self, X):
         """Return class label after unit step"""
         return np.where(self.activation(self.net_input(X)) 
-                        >= 0.0, 1, -1 )
+                        >= 0.0, 1, 0 )
     
     
     
