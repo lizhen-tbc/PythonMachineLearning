@@ -43,6 +43,7 @@ print('Accuracy: %.2f' % accuracy_score(y_test, y_pred))
 print('Accuracy: %.2f' % ppn.score(X_test_std, y_test))
 
 #%%
+import matplotlib.pyplot as plt
 y_pred1 = np.copy(y_pred)
 y_pred1 = ["%.2f" % i for i in y_pred]
 y_pred1 = np.array(y_pred1, dtype = '<U6')
@@ -171,10 +172,44 @@ plt.legend(loc = 'upper left')
 plt.xscale('log')
 plt.show()
 
+#%% p80
+from sklearn.svm import SVC
+svm = SVC(kernel = 'linear', C = 100.0, random_state = 1)
+svm.fit(X_train_std, y_train)
+plot_decision_regions(X_combined_std,
+                      y_combined, 
+                      classifier = svm,
+                      test_idx = range(105, 150))
 
+plt.xlabel('petal length')
+plt.ylabel('petal width')
+plt.legend(loc = 'upper left')
+plt.show()
 
+#%% pg 81 use these on large amounts of data. 
+from sklearn.linear_model import SGDClassifier
+ppn = SGDClassifier(loss = 'perceptron')
+lr = SGDClassifier(loss = 'log')
+svm = SGDClassifier(loss = 'hinge')
 
-
+#%% p82
+import matplotlib.pyplot as plt
+import numpy as np
+np.random.seed(1)
+X_xor = np.random.randn(200, 2)
+y_xor = np.logical_xor(X_xor[:, 0] > 0, 
+                       X_xor[:, 1] > 0)
+y_xor = np.where(y_xor, 1, -1)
+plt.scatter(X_xor[y_xor == 1, 0], 
+            X_xor[y_xor == 1, 1],
+            c = 'b', marker = 'x', label = '1')
+plt.scatter(X_xor[y_xor == -1, 0], 
+            X_xor[y_xor == -1, 1],
+            c = 'r', marker = 's', label = '-1')
+plt.xlim([-3, 3])
+plt.ylim([-3, 3])
+plt.legend(loc = 'best')
+plt.show()
 
 
 
