@@ -211,8 +211,23 @@ plt.ylim([-3, 3])
 plt.legend(loc = 'best')
 plt.show()
 
+#%% p85
+from sklearn.svm import SVC
+svm = SVC(kernel = 'rbf', random_state = 1, gamma = 0.1, C = 10.0)
+svm.fit(X_xor, y_xor)
+plot_decision_regions(X_xor, y_xor, classifier = svm)
+plt.legend(loc = 'upper left')
+plt.show()
 
-
+#%% p86
+svm = SVC(kernel = 'rbf', random_state = 1, gamma = 0.2, C = 1.0)
+svm.fit(X_train_std, y_train)
+plot_decision_regions(X_combined_std, y_combined, 
+                      classifier = svm, test_idx = range(105, 150))
+plt.xlabel('petal length')
+plt.ylabel('petal width')
+plt.legend(loc = 'upper left')
+plt.show()
 
 
 
