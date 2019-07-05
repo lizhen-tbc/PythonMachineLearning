@@ -228,7 +228,15 @@ plt.xlabel('petal length')
 plt.ylabel('petal width')
 plt.legend(loc = 'upper left')
 plt.show()
-
+#%% p87
+svm = SVC(kernel = 'rbf', random_state = 1, gamma = 100.0, C = 1.0)
+svm.fit(X_train_std, y_train)
+plot_decision_regions(X_combined_std, y_combined, 
+                      classifier = svm, test_idx = range(105, 150))
+plt.xlabel('petal length')
+plt.ylabel('petal width')
+plt.legend(loc = 'upper left')
+plt.show()
 
 
 
