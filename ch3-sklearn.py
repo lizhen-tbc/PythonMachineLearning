@@ -238,6 +238,49 @@ plt.ylabel('petal width')
 plt.legend(loc = 'upper left')
 plt.show()
 
+#%% p94
+import matplotlib.pyplot as plt
+import numpy as np
+def gini(p):
+    return p * (1 - p) + (1 - p) * (1 - (1 - p))
+def entropy(p):
+    return - p * np.log2(p) - (1 - p) * np.log2((1 - p))
+def error(p):
+    return 1 - np.max([p, 1 - p])
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 
 
