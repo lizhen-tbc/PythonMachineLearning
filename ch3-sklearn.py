@@ -284,7 +284,20 @@ plt.ylabel('petal width [cm]')
 plt.legend(loc = 'upper left') 
 plt.show()                          
     
-    
+#%% p97
+from pydotplus import graph_from_dot_data
+from sklearn.tree import export_graphviz
+dot_data = export_graphviz(tree, 
+                           filled = True, 
+                           rounded = True,
+                           class_names = ['Setosa',
+                                          'Versicolor',
+                                          'Virginica'],
+                           feature_names = ['petal length',
+                                            'petal width'],
+                           out_file = None)
+graph = graph_from_dot_data(dot_data)
+graph.write_png('tree.png')    
     
     
     
